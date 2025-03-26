@@ -1,6 +1,7 @@
 import { ArrowRight, CheckIcon } from "lucide-react";
 import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 function PricingSection() {
   const plans = [
@@ -15,6 +16,7 @@ function PricingSection() {
         "Email Support",
       ],
       recommended: false,
+      link: 'https://buy.stripe.com/test_00gaGh9c1fkk9xe8ww'
     },
     {
       id: "pro",
@@ -28,11 +30,12 @@ function PricingSection() {
         "Markdown Export",
       ],
       recommended: true,
+      link: 'https://buy.stripe.com/test_00g6q1cod8VWgZGdQR'
     },
   ];
 
   return (
-    <div className="w-full flex flex-col gap-4 justify-center items-center my-4 py-8">
+    <div className="w-full flex flex-col gap-4 justify-center items-center my-4 py-8" id='price'>
       <span className="font-bold uppercase text-rose-500">Pricing</span>
       <div className="py-12 flex flex-col lg:flex-row gap-6">
         {plans.map((plan, index) => {
@@ -65,11 +68,11 @@ function PricingSection() {
                   );
                 })}
               </ul>
-              <Button className={
-                cn("bg-gradient-to-r from-rose-400 to-rose-500 rounded-4xl", plan.recommended && "from-rose-700 to-rose-400 border border-rose-800")
+              <Link href={plan.link} className={
+                cn("bg-gradient-to-r from-rose-400 to-rose-500 rounded-4xl flex items-center justify-center p-2 text-white gap-2 font-bold", plan.recommended && "from-rose-700 to-rose-400 border border-rose-800")
               }>
                 Buy Now <ArrowRight />
-              </Button>
+              </Link>
             </div>
           );
         })}

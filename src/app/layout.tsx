@@ -3,6 +3,10 @@ import { Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/ui/common/header";
 import Footer from "@/components/ui/common/footer";
+import {
+  ClerkProvider
+} from '@clerk/nextjs'
+import { Toaster } from "@/components/ui/sonner"
 
 const sans = Source_Sans_3({
   weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
@@ -21,6 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <ClerkProvider>
     <html lang="en">
       <body
         className={`${sans.variable}`}
@@ -33,6 +38,8 @@ export default function RootLayout({
         <Footer/>
         </div>
       </body>
+      <Toaster/>
     </html>
+    </ClerkProvider>
   );
 }

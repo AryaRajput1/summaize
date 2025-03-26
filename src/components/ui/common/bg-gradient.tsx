@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-function BgGradient({ className }) {
+function BgGradient({ className, children }) {
   return (
     <div className={cn("relative isolate", className)}>
       <div
@@ -18,6 +18,7 @@ bg-linear-to-br from-emerald-500 via-teal-500 to-cyan-500
 opacity-20 sm: left-[calc(50%-30 rem)] sm: w-[72 rem]"
         />
       </div>
+      { children}
     </div>
   );
 }

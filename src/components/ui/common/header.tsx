@@ -1,6 +1,13 @@
 import { FileText } from "lucide-react";
 import { Badge } from "../badge";
 import NavLink from "./nav-link";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  SignUpButton,
+  UserButton,
+} from "@clerk/nextjs";
 
 function Header() {
   const isLoggedIn = true;
@@ -23,14 +30,19 @@ function Header() {
         )}
       </div>
       <div className="flex lg:justify-center lg:items-center gap-4 lg:gap-12">
-        {!isLoggedIn ? (
-          <NavLink href={"/login"}>Login</NavLink>
-        ) : (<div className="flex gap-2">
-          <NavLink href={"/login"}>Upload a PDF</NavLink>
-          <Badge variant={'secondary'} className="bg-rose-500">Pro</Badge>
-          User
+        <SignedOut>
+          <SignInButton />
+          <SignUpButton />
+        </SignedOut>
+        <SignedIn>
+          <div className="flex gap-2">
+            <NavLink href={"/upload"}>Upload a PDF</NavLink>
+            <Badge variant={"secondary"} className="bg-rose-500">
+              Pro
+            </Badge>
+            <UserButton />
           </div>
-        )}
+        </SignedIn>
       </div>
     </nav>
   );
