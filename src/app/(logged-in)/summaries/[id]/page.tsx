@@ -52,8 +52,8 @@ async function SummariesPage({ params }) {
           />
         </div>
       </div>
-      <div className="w-3xl justify-self-center shadow-xl rounded-xl bg-white p-4 m-8 bg-linear-to-r from-rose-50 to-white">
-        <SummaryViewer summary={data.summary_text} />
+      <div className="w-3xl justify-self-center shadow-xl rounded-xl bg-white p-4 m-8 bg-linear-to-r from-rose-50 to-white my-8">
+        <SummaryViewer summary={data.summary_text} className="w-full" />
       </div>
     </BgGradient>
   );

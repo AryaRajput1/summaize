@@ -1,5 +1,4 @@
 import { FileText } from "lucide-react";
-import { Badge } from "../badge";
 import NavLink from "./nav-link";
 import {
   SignedIn,
@@ -8,9 +7,15 @@ import {
   SignUpButton,
   UserButton,
 } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
+import { getSubscriptionData } from "@/utils/getSubscription";
+import PlanBadge from "./PlanBadge";
 
-function Header() {
-  const isLoggedIn = true;
+async function Header() {
+  const { userId } = await auth();
+
+  const { isActive, planTitle } = await getSubscriptionData()
+
   return (
     <nav className="flex items-center justify-between py-4">
       <div className="flex">
@@ -23,7 +28,7 @@ function Header() {
         </NavLink>
       </div>
       <div className="flex lg:justify-center lg:items-center gap-4 lg:gap-12">
-        {!isLoggedIn ? (
+        {!userId ? (
           <NavLink href={"#price"}>Price</NavLink>
         ) : (
           <NavLink href={"/dashboard"}>Your Summaries</NavLink>
@@ -36,10 +41,8 @@ function Header() {
         </SignedOut>
         <SignedIn>
           <div className="flex gap-2">
-            <NavLink href={"/upload"}>Upload a PDF</NavLink>
-            <Badge variant={"secondary"} className="bg-rose-500">
-              Pro
-            </Badge>
+            {userId && isActive && <NavLink href={"/upload"}>Upload a PDF</NavLink>}
+            <PlanBadge planTitle={planTitle}/>
             <UserButton />
           </div>
         </SignedIn>

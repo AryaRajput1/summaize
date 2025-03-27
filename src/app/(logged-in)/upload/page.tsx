@@ -1,9 +1,26 @@
 import { Badge } from "@/components/ui/badge";
 import BgGradient from "@/components/ui/common/bg-gradient";
 import UploadForm from "@/components/ui/common/upload-form";
+import { getSubscriptionData } from "@/utils/getSubscription";
+import { auth } from "@clerk/nextjs/server";
 import { Sparkles } from "lucide-react";
+import { redirect } from "next/navigation";
 
-function page() {
+async function page() {
+  const { userId } = await auth();
+  const { isMaxLimitReached, isActive } = await getSubscriptionData();
+
+  if (!userId) {
+    redirect("/sign-in");
+  }
+
+  if (!isActive) {
+    redirect("/#price");
+  }
+  
+  if (isMaxLimitReached) {
+    redirect("/dashboard");
+  }
   return (
     <BgGradient>
       <section className="flex flex-col mx-auto z-0 items-center justify-center py-16 gap-6">
@@ -30,7 +47,7 @@ function page() {
             Upload your PDF and let our AI to do the magic! 🔥
           </h2>
         </div>
-        <UploadForm/>
+        <UploadForm />
       </section>
     </BgGradient>
   );

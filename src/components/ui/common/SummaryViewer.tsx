@@ -11,6 +11,7 @@ import {
 import { useState } from "react";
 import NavigationControls from "./NavigationControls";
 import ProgressBar from "./ProgressBar";
+import { cn } from "@/lib/utils";
 
 const parseSection = (section) => {
   const [heading, ...contents] = section.split("\n") as [string, ...[string]];
@@ -24,7 +25,7 @@ const parseSection = (section) => {
   contents.forEach((content) => {
     const point = content.trim();
 
-    if (point.startsWith("•") || point.startsWith('•')) {
+    if (point.startsWith("•") || point.startsWith("•")) {
       if (currentPoint) points.push(currentPoint.substring(1).trim());
       currentPoint = point;
     } else if (!point) {
@@ -44,7 +45,13 @@ const parseSection = (section) => {
     ),
   };
 };
-function SummaryViewer({ summary }: { summary: string }) {
+function SummaryViewer({
+  summary,
+  className,
+}: {
+  summary: string;
+  className: string;
+}) {
   const [currentSection, setCurrentSection] = useState(0);
   const sections = summary
     .split("\n# ")
@@ -55,13 +62,18 @@ function SummaryViewer({ summary }: { summary: string }) {
   const title = sections[currentSection].title;
   const points = sections[currentSection].points;
   return (
-    <Card className="p-4">
-      <ProgressBar currentSection={currentSection} sections={sections}/>
+    <Card className={cn("p-4 w-3xl", className)}>
+      <ProgressBar currentSection={currentSection} sections={sections} />
       <div className="h-88 overflow-y-auto">
         <h1 className="text-3xl font-bold text-center m-4">{title}</h1>
         <ul>
           {points.map((point, index) => (
-            <li key={index} className="p-4 rounded-md m-4 bg-rose-50 border border-gray-100">{point}</li>
+            <li
+              key={index}
+              className="p-4 rounded-md m-4 bg-rose-50 border border-gray-100"
+            >
+              {point}
+            </li>
           ))}
         </ul>
       </div>

@@ -13,7 +13,7 @@ export async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Se
 
 }
 
-async function createOrUpdateUser(sql: any, email: string, full_name: string, customer_id: string, price_id: string, status: string) {
+export async function createOrUpdateUser(sql: any, email: string, full_name: string, customer_id: string, price_id: string, status: string ) {
     try {
         const user = await sql`SELECT * FROM users WHERE email=${email}`
 
@@ -26,7 +26,7 @@ async function createOrUpdateUser(sql: any, email: string, full_name: string, cu
 
 }
 
-async function createPayment(sql: any, session: Stripe.Checkout.Session, price_id: string, email: string) {
+export async function createPayment(sql: any, session: Stripe.Checkout.Session, price_id: string, email: string) {
     try {
         const { id: stripe_payment_id, amount_total: amount, status } = session
 

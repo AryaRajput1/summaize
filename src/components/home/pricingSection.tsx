@@ -2,38 +2,10 @@ import { ArrowRight, CheckIcon } from "lucide-react";
 import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { PLANS as plans } from "@/utils/const";
 
 function PricingSection() {
-  const plans = [
-    {
-      id: "basic",
-      title: "Basic",
-      description: "Perfect for occasional use",
-      price: "9",
-      benefits: [
-        "5 PDF summaries per month",
-        "Standard processing speed",
-        "Email Support",
-      ],
-      recommended: false,
-      link: 'https://buy.stripe.com/test_00gaGh9c1fkk9xe8ww'
-    },
-    {
-      id: "pro",
-      title: "Pro",
-      description: "For professionals and teams",
-      price: "19",
-      benefits: [
-        "Unlimited summaries per month",
-        "Priority processing speed",
-        "24/7 priority Support",
-        "Markdown Export",
-      ],
-      recommended: true,
-      link: 'https://buy.stripe.com/test_00g6q1cod8VWgZGdQR'
-    },
-  ];
-
+  
   return (
     <div className="w-full flex flex-col gap-4 justify-center items-center my-4 py-8" id='price'>
       <span className="font-bold uppercase text-rose-500">Pricing</span>

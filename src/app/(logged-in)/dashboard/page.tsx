@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import Banner from "@/components/ui/common/Banner";
 import SummaryCard from "@/components/ui/common/SummaryCard";
 import { getDbConnection } from "@/utils/db";
+import { getSubscriptionData } from "@/utils/getSubscription";
 import { auth } from "@clerk/nextjs/server";
 import { PlusIcon } from "lucide-react";
 import Link from "next/link";
@@ -16,6 +17,8 @@ async function DashboardPage() {
 
   const sql = await getDbConnection();
 
+  const { isMaxLimitReached } = await getSubscriptionData()
+
   const summaries =
     await sql`SELECT * FROM pdf_summaries WHERE user_id= ${userId}`;
 
@@ -28,7 +31,7 @@ async function DashboardPage() {
             Transform your pdfs into concise, actionable insights.
           </p>
         </div>
-        <Button className="bg-rose-500 hover:bg-rose-700 font-bold">
+        { !isMaxLimitReached && <Button className="bg-rose-500 hover:bg-rose-700 font-bold">
           <Link
             href={"/upload"}
             className="flex justify-center items-center gap-2"
@@ -36,14 +39,15 @@ async function DashboardPage() {
             <PlusIcon /> New Summary
           </Link>
         </Button>
+        }
       </div>
-      <Banner type="error" className="my-8">
+      {isMaxLimitReached && <Banner type="error" className="my-8">
         You've reached your maximum limit (5 Pdf Uploads) as per your basic
         plan.{" "}
         <Link href="/upgrade" className="underline">
           Click here to upgrade to Pro.
         </Link>
-      </Banner>
+      </Banner>}
       {summaries.length ? (
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {summaries.map((summary) => (

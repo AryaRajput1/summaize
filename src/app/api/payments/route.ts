@@ -1,4 +1,5 @@
 import { handleCheckoutSessionCompleted } from "@/utils/handleCheckoutSessionCompleted";
+import { handleSubsriptionDeleted } from "@/utils/handleSubsriptionDeleted";
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from 'stripe'
 
@@ -15,6 +16,8 @@ export async function POST(req: NextRequest) {
     let session
     let sessionId
 
+    console.log('e', event.type)
+
     switch (event.type) {
       case 'checkout.session.completed':
         sessionId = event.data.object.id
@@ -27,13 +30,16 @@ export async function POST(req: NextRequest) {
         await handleCheckoutSessionCompleted(session)
         break;
       case 'customer.subscription.deleted':
-        session = event.data.object
         sessionId = event.data.object.id
+        session = await stripe.subscriptions.retrieve(
+          sessionId);
         await handleSubsriptionDeleted(session)
         break;
       default: console.log('Unhandeled event type', event.type)
     }
   } catch (err) {
+    console.log(err)
+
     return NextResponse.json({
       success: false,
       err
