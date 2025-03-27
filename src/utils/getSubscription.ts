@@ -1,6 +1,7 @@
 import { auth, currentUser } from "@clerk/nextjs/server";
 import { getDbConnection } from "./db";
 import { PLANS } from "./const";
+import { revalidatePath } from "next/cache";
 
 export async function getSubscriptionData() {
     const user = await currentUser()

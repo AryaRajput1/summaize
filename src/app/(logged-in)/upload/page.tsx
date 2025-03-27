@@ -21,6 +21,7 @@ async function page() {
   if (isMaxLimitReached) {
     redirect("/dashboard");
   }
+  
   return (
     <BgGradient>
       <section className="flex flex-col mx-auto z-0 items-center justify-center py-16 gap-6">

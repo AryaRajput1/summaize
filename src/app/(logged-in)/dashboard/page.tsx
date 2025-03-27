@@ -7,6 +7,7 @@ import { auth } from "@clerk/nextjs/server";
 import { PlusIcon } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { toast } from "sonner";
 
 async function DashboardPage() {
   const { userId } = await auth();
@@ -17,7 +18,7 @@ async function DashboardPage() {
 
   const sql = await getDbConnection();
 
-  const { isMaxLimitReached } = await getSubscriptionData()
+  const { isMaxLimitReached, isActive } = await getSubscriptionData()
 
   const summaries =
     await sql`SELECT * FROM pdf_summaries WHERE user_id= ${userId}`;
