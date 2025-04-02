@@ -3,8 +3,7 @@ import BgGradient from "@/components/ui/common/bg-gradient";
 import {
   MotionDiv,
   MotionH1,
-  MotionH2,
-  MotionSection,
+  MotionH2
 } from "@/components/ui/common/motion-wrapper";
 import UploadForm from "@/components/ui/common/upload-form";
 import { getSubscriptionData } from "@/utils/getSubscription";
@@ -34,7 +33,7 @@ async function page() {
         <MotionDiv
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, delay: 0.3 }}
+          transition={{ duration: 0.3, delay: 0.1 }}
           className="flex"
         >
           <div className="flex relative p-[1px] overflow-hidden rounded-full bg-linear-to-r from-rose-200 via-rose-500 to-rose-800 animate-gradient-x group">
@@ -48,7 +47,7 @@ async function page() {
           <MotionH1
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: 0.3 }}
+            transition={{ duration: 0.3, delay: 0.1 }}
             className="text-3xl font-semibold"
           >
             Start Uploading{" "}
@@ -63,7 +62,7 @@ async function page() {
           <MotionH2
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: 0.3 }}
+            transition={{ duration: 0.3, delay: 0.1 }}
             className="text-gray-600"
           >
             Upload your PDF and let our AI to do the magic! 🔥
@@ -72,7 +71,7 @@ async function page() {
         <MotionDiv
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, delay: 0.4 }}
+          transition={{ duration: 0.3, delay: 0.1 }}
         >
           <UploadForm />
         </MotionDiv>

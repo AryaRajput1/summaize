@@ -2,9 +2,16 @@
 
 import { Download } from "lucide-react";
 import { Button } from "../button";
-import { format } from "date-fns";
 
-function DownloadButton({ text, fileName, created_at, title }) {
+function DownloadButton({
+  text,
+  fileName
+}: {
+  text: string;
+  fileName: string;
+  created_at?: string;
+  title?: string;
+}) {
   const downloadTextFile = () => {
     const blob = new Blob([text], { type: "text/plain" });
     const link = document.createElement("a");

@@ -1,7 +1,6 @@
-import { Pizza, PizzaIcon } from "lucide-react";
-import { Badge } from "../ui/badge";
+import { PizzaIcon } from "lucide-react";
 import SummaryViewer from "../ui/common/SummaryViewer";
-import { DEMO_SUMMARY, MOTION_CONSTANTS } from "@/utils/const";
+import { DEMO_SUMMARY } from "@/utils/const";
 import { MotionDiv, MotionH1, MotionSpan } from "../ui/common/motion-wrapper";
 
 function DemoSection() {

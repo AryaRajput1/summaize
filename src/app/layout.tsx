@@ -11,6 +11,7 @@ import { Toaster } from "@/components/ui/sonner"
 const sans = Source_Sans_3({
   weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
   style: ['normal', 'italic'],
+  subsets: ['latin'],
   variable: '--font-sans',
 })
 

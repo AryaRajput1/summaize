@@ -2,7 +2,6 @@ import {
   ArrowRight,
   BrainCircuit,
   FileUp,
-  TextIcon,
   TextSearch,
 } from "lucide-react";
 import { MotionDiv, MotionSpan } from "../ui/common/motion-wrapper";
@@ -31,7 +30,7 @@ function HowItWorksSection() {
       <MotionSpan
         initial={{ y: -20, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.5, duration: 0.2 }}
+        transition={{ delay: 0.2, duration: 0.2 }}
         className="font-bold uppercase text-rose-500"
       >
         How It works
@@ -39,7 +38,7 @@ function HowItWorksSection() {
       <MotionDiv
         initial={{ y: -20, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.5, duration: 0.2 }}
+        transition={{ delay: 0.2, duration: 0.2 }}
         className="text-2xl text-center md:text-3xl font-bold"
       >
         Transform any PDF into an easy-to-digest summary in three simple steps

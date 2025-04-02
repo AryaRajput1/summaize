@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import Banner from "@/components/ui/common/Banner";
 import {
   MotionDiv,
@@ -13,7 +12,6 @@ import { auth } from "@clerk/nextjs/server";
 import { PlusIcon } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { toast } from "sonner";
 
 async function DashboardPage() {
   const { userId } = await auth();
@@ -69,7 +67,7 @@ async function DashboardPage() {
             initial={{ opacity: 0, y: -20 }}
             transition={{
               duration: 0.3,
-              delay: 0.3,
+              delay: 0.1,
             }}
             className="bg-rose-500 hover:bg-rose-700 font-bold rounded-full py-2 px-4 text-white"
           >
@@ -77,7 +75,7 @@ async function DashboardPage() {
               href={"/upload"}
               className="flex justify-center items-center md:gap-2 gap-1 text-xs md:text-sm"
             >
-              <PlusIcon className="w-4 h-4" /> New Summary
+              <PlusIcon className="w-4 h-4" /> <span className="hidden md:block">New Summary</span>
             </Link>
           </MotionDiv>
         )}

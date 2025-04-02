@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-function BgGradient({ className, children }) {
+function BgGradient({ className, children }: { className?: string, children?: React.ReactNode}) {
   return (
     <div className={cn("relative isolate", className)}>
       <div

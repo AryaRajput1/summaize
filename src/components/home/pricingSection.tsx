@@ -1,5 +1,4 @@
 import { ArrowRight, CheckIcon } from "lucide-react";
-import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { PLANS as plans } from "@/utils/const";

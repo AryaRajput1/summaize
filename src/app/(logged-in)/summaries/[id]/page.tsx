@@ -1,6 +1,5 @@
 import { notFound, redirect } from "next/navigation";
 import { getSummaryById } from "../../../../../actions/getSummaryById";
-import { Badge } from "@/components/ui/badge";
 import { ExternalLink, FileText } from "lucide-react";
 import BgGradient from "@/components/ui/common/bg-gradient";
 import Link from "next/link";
@@ -10,7 +9,7 @@ import { auth } from "@clerk/nextjs/server";
 import SummaryViewer from "@/components/ui/common/SummaryViewer";
 import { MotionDiv, MotionH1 } from "@/components/ui/common/motion-wrapper";
 
-async function SummariesPage({ params }) {
+async function SummariesPage({ params }: { params: Promise<{ id: string }> }) {
   const { userId } = await auth();
 
   if (!userId) {
@@ -77,7 +76,7 @@ async function SummariesPage({ params }) {
       >
         <SummaryViewer
           summary={data.summary_text}
-          className={"w-[420px] md:w-2xl lg:w-3xl"}
+          className={"w-[420px] md:w-2xl lg:w-3xl mx-10"}
         />
       </MotionDiv>
     </BgGradient>
