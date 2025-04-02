@@ -27,9 +27,9 @@ const parseSection = (section: string) => {
   contents.forEach((content) => {
     const point = content.trim();
 
-    if (point.startsWith("•") || point.startsWith("•")) {
+    if (point.startsWith("•")) {
       if (currentPoint) points.push(currentPoint.substring(1).trim());
-      currentPoint = point;
+      currentPoint = point.substring(1).trim();
     } else if (!point) {
       if (currentPoint) points.push(currentPoint.trim());
       currentPoint = "";
