@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI-Powered PDF Summarization Web App
 
-## Getting Started
+This AI-driven web application is built using **Next.js, OpenAI, Gemini AI, NeonDB, TypeScript, and UploadThing**, providing seamless PDF summarization with both **basic and pro features**. Designed for professionals, researchers, and students, it enables users to quickly generate **short, crisp summaries** of their PDFs.
 
-First, run the development server:
+## 🚀 Key Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **AI-Powered Summarization** – Uses OpenAI & Gemini AI to generate concise summaries.
+- **PDF Upload & Processing** – Easily upload PDFs via UploadThing for instant analysis.
+- **Basic & Pro Plans** – Monetization with **Stripe Payment Gateway**, offering premium features.
+- **Secure & Scalable Storage** – Uses **NeonDB** for efficient database management.
+- **Modern UI/UX** – Built with a sleek, responsive interface for a smooth user experience.
+- **Framer Motion Animations** – Adds smooth transitions and animations for a dynamic user experience.
+- **Fully Responsive Design** – Optimized for mobile, tablet, and desktop devices.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Frontend:** Next.js, React 19, TypeScript, TailwindCSS, Framer Motion
+- **Backend:** OpenAI API, Gemini AI, NeonDB
+- **File Handling:** UploadThing
+- **Payments:** Stripe Payment Gateway
+- **Authentication & Security:** NextAuth.js (or Firebase, if applicable)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📌 Installation & Setup
 
-## Learn More
+### Prerequisites
+Ensure you have the following installed:
+- Node.js (>= 16.x)
+- npm or yarn
+- Environment variables for OpenAI, Gemini AI, NeonDB, UploadThing, and Stripe API keys
 
-To learn more about Next.js, take a look at the following resources:
+### Steps
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/your-repo/ai-pdf-summarizer.git
+   cd ai-pdf-summarizer
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. **Install dependencies:**
+   ```sh
+   npm install  
+   # or
+   yarn install
+   ```
 
-## Deploy on Vercel
+3. **Set up environment variables:**
+   Create a `.env.local` file and add:
+   ```env
+   Environment Variables
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. **Run the application:**
+   ```sh
+   npm run dev  
+   # or
+   yarn dev
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## 📈 Future Enhancements
+- **Multi-language Summarization**
+- **User Dashboard with Summary History**
+- **Team Collaboration Features**
+- **Enhanced AI Model Customization**
+- **Dark Mode Support**
+- **More Interactive UI with Framer Motion**
+
+## 🤝 Contributing
+Contributions are welcome! Feel free to open an issue or submit a pull request.
+
+## 📜 License
+This project is licensed under the MIT License.
+
+---
+
+🚀 **Start summarizing your PDFs with AI today!**
