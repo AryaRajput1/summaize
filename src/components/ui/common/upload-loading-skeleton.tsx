@@ -13,7 +13,14 @@ function UploadLoadingSkeleton() {
   }
   return (
     <Card className="p-4 shadow-xl flex items-center justify-center flex-col w-full mt-8">
-      <ProgressBar currentSection={0} sections={[1, 2, 3, 4, 5]} />
+      <ProgressBar
+        currentSection={0}
+        sections={[
+          { title: "", points: [] },
+          { title: "", points: [] },
+          { title: "", points: [] },
+        ]}
+      />
       <Skeleton className="h-10 w-[220px]" />
       <Skeleton className="h-10 w-[220px] self-start" />
       <Skeleton className="h-10 w-[100px] self-start" />

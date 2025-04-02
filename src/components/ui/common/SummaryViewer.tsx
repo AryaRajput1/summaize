@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils";
 import { MotionDiv, MotionLi, MotionUl } from "./motion-wrapper";
 import { MOTION_CONSTANTS } from "@/utils/const";
 
-const parseSection = (section) => {
+const parseSection = (section: string) => {
   const [heading, ...contents] = section.split("\n") as [string, ...[string]];
   const title = heading.startsWith("#")
     ? heading.substring(1).trim()

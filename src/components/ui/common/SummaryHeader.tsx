@@ -4,7 +4,7 @@ import Link from "next/link";
 import { format } from "date-fns";
 import { MotionDiv } from "./motion-wrapper";
 
-function SummaryHeader({ data }) {
+function SummaryHeader({ data }: { data: { created_at: string, summary_text: string}}) {
   return (
     <MotionDiv
       initial={{ opacity: 0, y: -20 }}

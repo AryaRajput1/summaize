@@ -24,7 +24,7 @@ async function SummariesPage({ params }: { params: Promise<{ id: string }> }) {
 
   return (
     <BgGradient className={""}>
-      <SummaryHeader data={data} />
+      <SummaryHeader data={data as { created_at: string, summary_text: string}} />
       <MotionH1
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}

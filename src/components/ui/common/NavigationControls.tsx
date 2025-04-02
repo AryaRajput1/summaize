@@ -5,9 +5,19 @@ import { Button } from "../button";
 import { cn } from "@/lib/utils";
 import { useEffect } from "react";
 
-function NavigationControls({ sections, currentSection, onNext, onPrev }) {
+function NavigationControls({
+  sections,
+  currentSection,
+  onNext,
+  onPrev,
+}: {
+  sections: { title: string; points: string[]; }[];
+  currentSection: number;
+  onNext: () => void;
+  onPrev: () => void;
+}) {
   useEffect(() => {
-    const eventCallback = (e) => {
+    const eventCallback = (e: KeyboardEvent) => {
       if (e.key === "ArrowRight" && currentSection < sections.length) {
         onNext();
       }

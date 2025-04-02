@@ -1,7 +1,6 @@
 "use client";
 
 import { fileSchema } from "@/schema/fileSchema";
-import { Button } from "../button";
 import { Input } from "../input";
 import { useUploadThing } from "@/utils/uploadthing";
 import { toast } from "sonner";
@@ -21,13 +20,13 @@ function UploadForm() {
     onUploadError: (error) => {
       toast.error("Oh No! There is an issue 🥺.");
     },
-    onUploadBegin: ({ file }) => {
+    onUploadBegin: () => {
       toast("File is being uploading 🚀.");
     },
   });
 
-  const onSubmit = async (formData) => {
-    const file = formData.get("file");
+  const onSubmit = async (formData: FormData) => {
+    const file = formData.get("file") as File;
 
     const result = fileSchema.safeParse({ file });
 
@@ -36,7 +35,15 @@ function UploadForm() {
       return;
     }
 
-    const resp = await startUpload([file]);
+    const resp = (await startUpload([file])) as unknown as {
+      serverData: {
+        userId: string;
+        file: {
+          url: string;
+          name: string;
+        };
+      };
+    }[];
 
     if (!resp) {
       toast.error("Oh No! There is an issue 🥺.");
