@@ -1,14 +1,13 @@
-import {
-  Card
-} from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { FileText, Trash2Icon } from "lucide-react";
 import { Button } from "../button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { formatDistanceToNow } from 'date-fns'
+import { formatDistanceToNow } from "date-fns";
 import DeleteSummaryButton from "./DeleteSummaryButton";
+import { MotionDiv } from "./motion-wrapper";
 
-const Badge = ({ status } : { status: 'completed'}) => {
+const Badge = ({ status }: { status: "completed" }) => {
   return (
     <span
       className={cn(
@@ -38,9 +37,9 @@ function SummaryCard({
   id,
   summary_text,
 }: PropTypes) {
-    const time = formatDistanceToNow(new Date(created_at),)
+  const time = formatDistanceToNow(new Date(created_at));
   return (
-    <div>
+    <MotionDiv whileHover={{ scale: 1.05 }} className="mx-6 md:mx-0">
       <Card className="p-3 h-full">
         <div className="flex items-center justify-between">
           <div className="flex gap-3 justify-center items-center">
@@ -50,14 +49,14 @@ function SummaryCard({
               <p className="text-xs text-gray-500">{time}</p>
             </div>
           </div>
-          <DeleteSummaryButton id={id}/>
+          <DeleteSummaryButton id={id} />
         </div>
         <Link href={`summaries/${id}`} className="flex flex-col gap-4">
           <p className="text-gray-600 line-clamp-2 text-sm">{summary_text}</p>
           <Badge status={status} />
         </Link>
       </Card>
-    </div>
+    </MotionDiv>
   );
 }
 export default SummaryCard;

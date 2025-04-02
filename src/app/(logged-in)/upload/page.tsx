@@ -1,5 +1,11 @@
 import { Badge } from "@/components/ui/badge";
 import BgGradient from "@/components/ui/common/bg-gradient";
+import {
+  MotionDiv,
+  MotionH1,
+  MotionH2,
+  MotionSection,
+} from "@/components/ui/common/motion-wrapper";
 import UploadForm from "@/components/ui/common/upload-form";
 import { getSubscriptionData } from "@/utils/getSubscription";
 import { auth } from "@clerk/nextjs/server";
@@ -17,24 +23,34 @@ async function page() {
   if (!isActive) {
     redirect("/#price");
   }
-  
+
   if (isMaxLimitReached) {
     redirect("/dashboard");
   }
-  
+
   return (
-    <BgGradient>
+    <BgGradient className={""}>
       <section className="flex flex-col mx-auto z-0 items-center justify-center py-16 gap-6">
-        <div className="flex">
+        <MotionDiv
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3, delay: 0.3 }}
+          className="flex"
+        >
           <div className="flex relative p-[1px] overflow-hidden rounded-full bg-linear-to-r from-rose-200 via-rose-500 to-rose-800 animate-gradient-x group">
             <Badge className="relative px-6 py-2 rounded-full bg-white text-rose-500 group-hover:text-gray-900 group-hover:bg-transparent transition-colors duration-300">
               <Sparkles className="h-8 w-8 mr-2 text-rose-600 animate-pulse" />
               <p>AI Powered Content Creation</p>
             </Badge>
           </div>
-        </div>
+        </MotionDiv>
         <div className="flex flex-col justify-center items-center gap-2">
-          <h1 className="text-3xl font-semibold">
+          <MotionH1
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: 0.3 }}
+            className="text-3xl font-semibold"
+          >
             Start Uploading{" "}
             <span className="relative px-2">
               <span
@@ -43,12 +59,23 @@ async function page() {
               ></span>
               Your PDF's
             </span>
-          </h1>
-          <h2 className="text-gray-600">
+          </MotionH1>
+          <MotionH2
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: 0.3 }}
+            className="text-gray-600"
+          >
             Upload your PDF and let our AI to do the magic! 🔥
-          </h2>
+          </MotionH2>
         </div>
-        <UploadForm />
+        <MotionDiv
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3, delay: 0.4 }}
+        >
+          <UploadForm />
+        </MotionDiv>
       </section>
     </BgGradient>
   );

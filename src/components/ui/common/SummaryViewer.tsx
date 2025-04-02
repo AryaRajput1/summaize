@@ -12,6 +12,8 @@ import { useState } from "react";
 import NavigationControls from "./NavigationControls";
 import ProgressBar from "./ProgressBar";
 import { cn } from "@/lib/utils";
+import { MotionDiv, MotionLi, MotionUl } from "./motion-wrapper";
+import { MOTION_CONSTANTS } from "@/utils/const";
 
 const parseSection = (section) => {
   const [heading, ...contents] = section.split("\n") as [string, ...[string]];
@@ -62,21 +64,33 @@ function SummaryViewer({
   const title = sections[currentSection].title;
   const points = sections[currentSection].points;
   return (
-    <Card className={cn("p-4 w-3xl", className)}>
+    <Card className={cn("p-4 w-3xl shadow-xl", className)}>
       <ProgressBar currentSection={currentSection} sections={sections} />
-      <div className="h-88 overflow-y-auto">
-        <h1 className="text-3xl font-bold text-center m-4">{title}</h1>
-        <ul>
+      <MotionDiv
+        key={currentSection}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1}}
+        transition={{ delay: 0.2, ease: "easeInOut" }}
+        exit={{ opacity: 0 }}
+        className="h-88 overflow-y-auto no-scrollbar"
+      >
+        <h1 className="text-2xl font-bold text-center md:m-8 m-1">{title}</h1>
+        <MotionUl
+          variants={MOTION_CONSTANTS.contianerVariants}
+          initial="hidden"
+          animate="visible"
+        >
           {points.map((point, index) => (
-            <li
+            <MotionLi
+              variants={MOTION_CONSTANTS.itemVariants}
               key={index}
-              className="p-4 rounded-md m-4 bg-rose-50 border border-gray-100"
+              className="md:p-4 p-2 rounded-md md:m-4 m-2 bg-rose-50 border border-gray-100"
             >
               {point}
-            </li>
+            </MotionLi>
           ))}
-        </ul>
-      </div>
+        </MotionUl>
+      </MotionDiv>
       <NavigationControls
         sections={sections}
         currentSection={currentSection}

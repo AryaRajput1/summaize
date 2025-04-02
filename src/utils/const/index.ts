@@ -24,7 +24,7 @@ export const PLANS = [
       "24/7 priority Support",
       "Markdown Export",
     ],
-    limit: 1,
+    limit: 1000,
     recommended: true,
     link: 'https://buy.stripe.com/test_00g6q1cod8VWgZGdQR'
   },

@@ -21,6 +21,8 @@ export async function getSubscriptionData() {
 
     const plan = PLANS.find(plan => plan.price_id == price_id)
 
+    console.log(totalCount, plan?.limit)
+
     return {
         planTitle: (isActive ? plan?.title : 'Buy a') + ' Plan',
         isMaxLimitReached: totalCount >= plan?.limit!,

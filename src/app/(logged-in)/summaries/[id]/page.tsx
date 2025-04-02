@@ -8,6 +8,7 @@ import SummaryHeader from "@/components/ui/common/SummaryHeader";
 import DownloadButton from "@/components/ui/common/DownloadButton";
 import { auth } from "@clerk/nextjs/server";
 import SummaryViewer from "@/components/ui/common/SummaryViewer";
+import { MotionDiv, MotionH1 } from "@/components/ui/common/motion-wrapper";
 
 async function SummariesPage({ params }) {
   const { userId } = await auth();
@@ -25,12 +26,28 @@ async function SummariesPage({ params }) {
   return (
     <BgGradient className={""}>
       <SummaryHeader data={data} />
-      <h1 className="text-3xl font-bold my-4">
+      <MotionH1
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.3,
+          delay: 0.2,
+        }}
+        className="text-3xl font-bold my-4 text-center md:text-left"
+      >
         <span className="bg-linear-to-r from-rose-600 to-orange-600 bg-clip-text text-transparent">
           {data.title}
         </span>
-      </h1>
-      <div className="flex justify-center gap-3 flex-col items-center">
+      </MotionH1>
+      <MotionDiv
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.3,
+          delay: 0.3,
+        }}
+        className="flex justify-center gap-3 flex-col items-center"
+      >
         <div className="flex font-semibold gap-2 items-center justify-center">
           <FileText className="text-rose-600 w-4 h-4" />
           <span className="text-gray-600">Source: {data.file_name}</span>
@@ -51,10 +68,18 @@ async function SummariesPage({ params }) {
             created_at={data.created_at}
           />
         </div>
-      </div>
-      <div className="w-3xl justify-self-center shadow-xl rounded-xl bg-white p-4 m-8 bg-linear-to-r from-rose-50 to-white my-8">
-        <SummaryViewer summary={data.summary_text} className="w-full" />
-      </div>
+      </MotionDiv>
+      <MotionDiv
+        initial={{ x: -20, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ delay: 0.5, duration: 0.2 }}
+        className="justify-self-center shadow-xl rounded-xl bg-white p-4 m-8 bg-linear-to-r from-rose-50 to-white"
+      >
+        <SummaryViewer
+          summary={data.summary_text}
+          className={"w-[420px] md:w-2xl lg:w-3xl"}
+        />
+      </MotionDiv>
     </BgGradient>
   );
 }

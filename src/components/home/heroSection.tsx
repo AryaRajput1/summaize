@@ -11,7 +11,7 @@ function HeroSection() {
       variants={MOTION_CONSTANTS.contianerVariants}
       initial="hidden"
       animate="visible"
-      className="flex flex-col mx-auto z-0 items-center justify-center py-16 gap-3"
+      className="flex flex-col mx-auto z-0 items-center justify-center py-16 gap-8"
     >
       <div className="flex">
         <div className="flex relative p-[1px] overflow-hidden rounded-full bg-linear-to-r from-rose-200 via-rose-500 to-rose-800 animate-gradient-x group">
@@ -25,7 +25,7 @@ function HeroSection() {
         variants={MOTION_CONSTANTS.itemVariants}
         className="flex flex-col justify-center items-center gap-2"
       >
-        <h1 className="text-3xl font-bold text-center">
+        <h1 className="text-3xl md:text-4xl font-bold text-center">
           Transform PDFs into{" "}
           <span className="relative px-2">
             <span

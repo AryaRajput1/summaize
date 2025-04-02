@@ -19,7 +19,10 @@ export async function createOrUpdateUser(sql: any, email: string, full_name: str
 
         if (!user.length) {
             await sql`INSERT INTO users (email, full_name, customer_id, price_id, status) VALUES(${email}, ${full_name}, ${customer_id}, ${price_id}, ${status})`
+            return
         }
+
+        await sql`UPDATE users SET status='complete' WHERE customer_id = ${customer_id}`
     } catch (e) {
         console.log(e)
     }

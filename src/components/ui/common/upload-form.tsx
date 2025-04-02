@@ -10,9 +10,10 @@ import { generatePDFSummary } from "../../../../actions/generatePDFSummary";
 import { savePDFSummary } from "../../../../actions/savePDFSummary";
 import { formatFileNameAsTitle } from "@/utils/formatFileNameAsTitle";
 import { useRouter } from "next/navigation";
+import UploadLoading from "./upload-loading";
 
 function UploadForm() {
-  const router = useRouter()
+  const router = useRouter();
   const { startUpload, routeConfig } = useUploadThing("pdfUploader", {
     onClientUploadComplete: () => {
       toast.success("Hurray! File Uploaded ☺️.");
@@ -46,21 +47,21 @@ function UploadForm() {
     const { data, message } = await generatePDFSummary(resp);
 
     if (data) {
-      console.log({data})
+      console.log({ data });
       toast.success("Hang Tight! we are saving your summary.");
 
-      const title = formatFileNameAsTitle(file.name)
+      const title = formatFileNameAsTitle(file.name);
 
       try {
         const result = await savePDFSummary({
           file_name: file.name,
           title: title,
           original_file_url: resp[0].serverData.file.url,
-          summary_text: data
-        })
+          summary_text: data,
+        });
         toast.success("Hurray! we have saved your summary.");
 
-        router.push('/dashboard')
+        router.push("/dashboard");
       } catch (error) {
         toast.success("Not able to save summary.");
       }
@@ -71,16 +72,19 @@ function UploadForm() {
   };
   return (
     <div className="mt-10">
-      <form className="flex gap-2" action={onSubmit}>
-        <Input
-          type="file"
-          name="file"
-          id="file"
-          className=""
-          required
-          accept="application/pdf"
-        />
-        <UploadFormButton />
+      <form className="flex flex-col" action={onSubmit}>
+        <div className="flex gap-2">
+          <Input
+            type="file"
+            name="file"
+            id="file"
+            className=""
+            required
+            accept="application/pdf"
+          />
+          <UploadFormButton />
+        </div>
+        <UploadLoading />
       </form>
     </div>
   );
