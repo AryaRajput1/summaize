@@ -11,7 +11,7 @@ export const PLANS = [
     ],
     limit: 5,
     recommended: false,
-    link: 'https://buy.stripe.com/test_00gaGh9c1fkk9xe8ww'
+    link: process.env.STRIPE_BASIC_PLAN || ''
   },
   {
     price_id: "price_1R6UA0Ron1tcUFNVlYkr3DEB",
@@ -26,7 +26,7 @@ export const PLANS = [
     ],
     limit: 1000,
     recommended: true,
-    link: 'https://buy.stripe.com/test_00g6q1cod8VWgZGdQR'
+    link: process.env.STRIPE_PRO_PLAN || ''
   },
 ];
 
